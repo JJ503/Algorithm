@@ -8,7 +8,6 @@ class Solution:
                 if temp == "":
                     temp = s[j]
                 elif s[j] in temp:
-                    temp = s[j]
                     break
                 else:
                     temp += s[j]
