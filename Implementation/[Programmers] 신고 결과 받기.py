@@ -7,7 +7,7 @@ def solution(id_list, report, k):
         
         if reportId[1] in reportDict and reportId[0] not in reportDict[reportId[1]]:
             reportDict[reportId[1]].append(reportId[0])
-        else:
+        elif reportId[1] not in reportDict:
             reportDict[reportId[1]] = [reportId[0]]
                 
     for key in reportDict:
