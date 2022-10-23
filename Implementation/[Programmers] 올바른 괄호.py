@@ -2,9 +2,9 @@ def solution(s):
     answer = True
     count = 0
     
-    stack = list(s)
+    sList = list(s)
     
-    for bracket in stack:
+    for bracket in sList:
         if bracket == '(':
             count += 1
             
