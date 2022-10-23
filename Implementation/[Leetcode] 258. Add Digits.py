@@ -10,5 +10,4 @@ class Solution:
             tempList = map(int, tempList)
             num = sum(tempList)
             
-            
         return num
