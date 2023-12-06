@@ -9,7 +9,6 @@ def solution(n):
         n = n // 3
     
     temp += str(n)
-    print(temp)
     
     i = len(temp) - 1
     for s in temp:
