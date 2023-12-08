@@ -4,15 +4,13 @@ traffics = [0] * n
 for i in range(b):
     traffics[int(input()) - 1] = 1
 
-answer = n
 total = sum(traffics[0:k])
-for i in range(n - k):
-    if traffics[i] == 1:
-        total -= 1
+answer = total
+for i in range(0, n - k):
+    total -= traffics[i]
+    total += traffics[i + k]
 
     if answer > total:
         answer = total
-    
-    total += traffics[i + k]
 
 print(answer)
