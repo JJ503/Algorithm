@@ -9,10 +9,10 @@ total = sum(traffics[0:k])
 for i in range(n - k):
     if traffics[i] == 1:
         total -= 1
-    
-    total += traffics[i + k]
 
     if answer > total:
         answer = total
+    
+    total += traffics[i + k]
 
 print(answer)
