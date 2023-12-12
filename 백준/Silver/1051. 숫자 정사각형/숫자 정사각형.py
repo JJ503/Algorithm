@@ -19,7 +19,7 @@ for cnt in range(maxCnt, 0, -1):
             vertex3 = board[i + cnt - 1][j]
             vertex4 = board[i][j + cnt - 1]
 
-            if vertex1 == vertex2 and vertex2 == vertex3 and vertex3 == vertex4:
+            if vertex1 == vertex2 == vertex3 == vertex4:
                 answer = cnt
                 break
 
