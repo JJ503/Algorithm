@@ -1,6 +1,5 @@
 def solution(n, t, m, p):
     answer = '0'
-    
     letter = "0123456789ABCDEF"
     
     currentNumber = -1
