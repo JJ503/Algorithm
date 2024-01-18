@@ -1,18 +1,16 @@
 def solution(N, stages):
     answer = []
-    rate = dict()
     
-    for i in range(1, N+1):
-        fail = stages.count(i)
-        challenger = len(list(filter(lambda x: x >= i, stages)))
-        if challenger < 1:
-            rate[i] = 0
+    playerCount = len(stages)
+    for i in range(1, N + 1):
+        failCount = stages.count(i)
+        if failCount == 0:
+            answer.append((i, 0))
         else:
-            rate[i] = fail/challenger
+            answer.append((i, failCount / playerCount))
+            playerCount -= failCount
     
-    rate = sorted(rate.items(), key = lambda x: x[1], reverse = True)
-    
-    for stage in rate:
-        answer.append(stage[0])
+    answer.sort(reverse = True, key = lambda x: x[1])
+    answer = [a[0] for a in answer]
     
     return answer
