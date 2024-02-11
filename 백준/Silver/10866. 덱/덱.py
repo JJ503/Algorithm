@@ -10,43 +10,35 @@ for _ in range(n):
 
     if command == "push_front":
         array.appendleft(commands[1])
-        continue
-    if command == "push_back":
+    elif command == "push_back":
         array.append(commands[1])
-        continue
-    if command == "pop_front":
+    elif command == "pop_front":
         if len(array) == 0:
             print(-1)
         else:
             pop = array.popleft()
             print(pop)
-        continue
-    if command == "pop_back":
+    elif command == "pop_back":
         if len(array) == 0:
             print(-1)
         else:
             pop = array.pop()
             print(pop)
-        continue
-    if command == "size":
+    elif command == "size":
         print(len(array))
-        continue
-    if command == "empty":
+    elif command == "empty":
         if len(array) == 0:
             print(1)
         else:
             print(0)
-        continue
-    if command == "front":
+    elif command == "front":
         if len(array) == 0:
             print(-1)
         else:
             print(array[0])
-        continue
-    if command == "back":
+    elif command == "back":
         if len(array) == 0:
             print(-1)
         else:
             print(array[-1])
-        continue
     
