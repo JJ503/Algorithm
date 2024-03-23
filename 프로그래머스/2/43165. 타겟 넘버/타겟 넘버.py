@@ -1,17 +1,17 @@
 def solution(numbers, target):
     answer = 0
     
-    def dfs(count, num, numbers):
+    def dfs(count, sum):
         nonlocal answer
-        if count == len(numbers) :
-            if num == target:
-                answer += 1
-                
-            return
         
-        dfs(count + 1, num + numbers[count], numbers)
-        dfs(count + 1, num - numbers[count], numbers)
+        if count == len(numbers):
+            if sum == target:
+                answer += 1
+            return
+
+        dfs(count + 1, sum + numbers[count])
+        dfs(count + 1, sum - numbers[count])
     
-    dfs(0, 0, numbers)
+    dfs(0, 0)
     
     return answer
