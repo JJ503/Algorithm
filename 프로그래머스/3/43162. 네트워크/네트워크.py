@@ -1,32 +1,23 @@
-def find_parent(parent, x):
-    if parent[x] != x:
-        return find_parent(parent, parent[x])
-    return x
-
-def union_parent(parent, a, b):
-    a = find_parent(parent, a)
-    b = find_parent(parent, b)
-        
-    if a < b:
-        parent[b] = a
-    else:
-        parent[a] = b
-
-
 def solution(n, computers):
-    parent = [0] * n
-    
-    for i in range(n):
-        parent[i] = i
-    
-    for i in range(len(computers)):
-        for j in range(len(computers[i])):
-            if computers[i][j] == 1:
-                union_parent(parent, i, j)
-    
     answer = 0
-    for i in range(n):
-        if i == parent[i]:
+    visited = [0] * n
+    
+    def dfs(computers, visited, start):
+        stack = [start]
+        while stack:
+            now = stack.pop()
+            if visited[now] == 0:
+                visited[now] = 1
+            
+            for i in range(len(computers)):
+                if computers[now][i] == 1 and visited[i] == 0:
+                    stack.append(i)
+    
+    current_index = 0
+    while 0 in visited:
+        if visited[current_index] == 0:
+            dfs(computers, visited, current_index)
             answer += 1
+        current_index += 1
     
     return answer
