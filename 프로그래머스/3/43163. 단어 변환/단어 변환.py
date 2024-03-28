@@ -1,5 +1,3 @@
-from collections import deque
-
 def solution(begin, target, words):
     def can_change(begin, target):
         diff_count = 0
@@ -12,14 +10,26 @@ def solution(begin, target, words):
     if target not in words:
         return 0
     
-    queue = deque()
-    queue.append((begin, 0))
-    while queue:
-        now_word, depth = queue.popleft()
-        
+    answer = []
+    visited = dict()
+    def dfs(now_word, depth):
         if now_word == target:
-            return depth
+            answer.append(depth)
+        
+        if now_word not in visited:
+            visited[now_word] = depth
+            
+        if now_word in visited and visited[now_word] > depth:
+            visited[now_word] = depth
         
         for w in words:
             if can_change(now_word, w):
-                queue.append((w, depth + 1))
+                if w in visited:
+                    if visited[w] > depth:
+                        dfs(w, depth + 1)
+                else:
+                    dfs(w, depth + 1)
+    
+    dfs(begin, 0)
+    
+    return min(answer)
