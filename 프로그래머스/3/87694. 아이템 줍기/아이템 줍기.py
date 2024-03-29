@@ -3,7 +3,7 @@ from collections import deque
 def solution(rectangle, characterX, characterY, itemX, itemY):
     answer = 0
 
-    maps = [[-1] * 102 for _ in range(102)]
+    maps = [[-1] * 101 for _ in range(101)]
     for rec in rectangle:
         x1, y1, x2, y2 = map(lambda x: x * 2, rec)
         for i in range(x1, x2 + 1):
@@ -18,7 +18,7 @@ def solution(rectangle, characterX, characterY, itemX, itemY):
     
     queue = deque()
     queue.append([characterX * 2, characterY * 2])
-    visited = [[1] * 102 for _ in range(102)]
+    visited = [[1] * 101 for _ in range(101)]
     visited[characterX * 2][characterY * 2] = 0
     
     while queue:
@@ -31,8 +31,9 @@ def solution(rectangle, characterX, characterY, itemX, itemY):
             nx = x + dx[i]
             ny = y + dy[i]
             
-            if maps[nx][ny] == 1 and visited[nx][ny] == 1:
-                queue.append([nx, ny])
-                visited[nx][ny] = visited[x][y] + 1
+            if 1 <= nx <= 100 and 1 <= ny <= 100:
+                if maps[nx][ny] == 1 and visited[nx][ny] == 1:
+                    queue.append([nx, ny])
+                    visited[nx][ny] = visited[x][y] + 1
     
     return answer
