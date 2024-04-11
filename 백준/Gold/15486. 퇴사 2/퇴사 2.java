@@ -24,7 +24,6 @@ public class Main {
             }
         }
 
-        Arrays.sort(dp);
-        System.out.println(dp[n]);
+        System.out.println(dp[0]);
 	}
 }
