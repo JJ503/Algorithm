@@ -17,14 +17,22 @@ public class Main {
         int c = Integer.parseInt(str.nextToken());
         int n = Integer.parseInt(str.nextToken());
 
-        for (int i = 0; i < n / a + 1; i++) {
-            for (int j = 0; j < n / b + 1; j++) {
-                int temp = n;
-                temp -= (a * i) + (b * j);
+        if (n % a == 0 || n % b == 0 || n % c == 0) {
+            System.out.println(1);
+            return;
+        }
 
-                if (temp == 0 || (temp >= c && temp % c == 0 && temp / c > j)) {
-                    System.out.println(1);
-                    return;
+        for (int i = 0; i <= n; i++) {
+            int aStudent = a * i;
+            for (int j = 0; j <= n; j++) {
+                int bStudent = b * j;
+                for (int k = 0; k <= n; k++) {
+                    int cStudent = c * k;
+                    
+                    if (aStudent + bStudent + cStudent == n) {
+                        System.out.println(1);
+                        return;
+                    }
                 }
             }
         }
