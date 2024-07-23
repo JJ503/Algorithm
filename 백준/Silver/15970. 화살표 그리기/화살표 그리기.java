@@ -7,30 +7,26 @@ public class Main {
 
     static BufferedReader br;
     static StringTokenizer str;
-    static int WHITE = 1, BLACK = 2;
 
     public static void main(String[] args) throws IOException {
 		br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        boolean[] whiteArr = new boolean[100001];
-        boolean[] blackArr = new boolean[100001];
+        boolean[][] arr = new boolean[n][100001];
 
         for (int i = 0; i < n; i++) {
             str = new StringTokenizer(br.readLine());
             int x = Integer.parseInt(str.nextToken());
-            int y = Integer.parseInt(str.nextToken());
+            int y = Integer.parseInt(str.nextToken()) - 1;
 
-            if (y == WHITE) {
-                whiteArr[x] = true;
-                continue;
-            }
-            blackArr[x] = true;
+            arr[y][x] = true;
         }
 
-        int whiteLength = countLenght(whiteArr);
-        int blackLength = countLenght(blackArr);
+        int answer = 0;
+        for (int i = 0; i < n; i++) {
+            answer += countLenght(arr[i]);
+        }
 
-        System.out.println(whiteLength + blackLength);
+        System.out.println(answer);
     }
 
     private static int countLenght(boolean[] arr) {
