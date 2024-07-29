@@ -2,7 +2,7 @@
 SELECT SUBSTRING(trans_date, 1, 7) month,
     country,
     COUNT(*) trans_count,
-    SUM(state = 'approved') approved_count,
+    COUNT(CASE WHEN state = 'approved' THEN 1 END) approved_count,
     SUM(amount) trans_total_amount,
     SUM(IF(state = 'approved', amount, 0)) approved_total_amount
 FROM transactions
